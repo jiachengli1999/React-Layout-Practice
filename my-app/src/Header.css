@@ -1,0 +1,68 @@
+.App{
+
+}
+.Navs{
+    background-color: #333;
+    /* overflow: hidden; */
+}
+.Navs label{
+    padding: 12px 14px;
+    font-size: 25px;
+    color: white;
+}
+
+.Navs label:hover{
+    background-color: white;
+    color: black;
+}
+
+/* remove bullets */
+ul {
+    list-style-type: none;
+    text-align: center;
+    display:table;
+    
+}
+
+li:hover{
+    font-weight: bold;
+}
+
+.menu, .categories{
+    float: left;
+    /* padding-right: 20px; */
+    margin: 10px 10px;
+    /* margin: 0 auto; */
+}
+
+.categories{
+    width: 20%;
+    font-size: 30px;
+    border: 5px solid black;
+    border-radius: 10%;
+}
+
+.menu{
+    width: 70%;
+    padding-left: 10px;
+    /* border: 5px solid black; */
+}
+
+.name_row{
+    /* border: 5px solid black; */
+    /* separate the div block below from sticking when using float */
+    overflow: hidden;
+}
+.category_name, .curr_category {
+    float: left;
+}
+
+.category_name{
+    padding-left: 50px;
+    font-size: 30px;
+}
+
+.curr_category{
+    padding-left: 300px;
+    font-size: 30px;
+}
