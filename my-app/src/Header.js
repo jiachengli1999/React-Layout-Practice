@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Header.css'
-import Entrees from './Entrees.js'
+import FoodList from './FoodList.js'
 
 class Header extends Component{
     constructor(){
@@ -81,7 +81,7 @@ class Header extends Component{
                         
                     </div>
                     <div className='menu'>
-                        {this.state.currCategory != ''? <Entrees category={this.state.currCategory} food={food_items}/> : ''}
+                        {this.state.currCategory !== ''? <FoodList category={this.state.currCategory} food={food_items}/> : ''}
                     </div>
                 </div>
             </div>
