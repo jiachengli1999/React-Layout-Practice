@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import './Header.css'
 import Entrees from './Entrees.js'
+
 class Header extends Component{
     constructor(){
         super()
         this.state=({
             currCategory: '',
+            categories: [],
             images: [],
+            indexes: 0,
         })
 
     }
@@ -18,7 +21,9 @@ class Header extends Component{
             // results => this.setState({images: results})
             results => {
                 // get unique categories
-                this.setState({images: Array.from(new Set(results.map(img => img.category)))})
+                let new_categories = Array.from(new Set(results.map(img => img.category)))
+                // get all objects 
+                this.setState({categories: new_categories, images: results})
             }
         );
     }
@@ -29,23 +34,18 @@ class Header extends Component{
     }
 
     render(){
-        let category;
-        switch(this.state.currCategory){
-            case 'Entrees':
-                category=<Entrees />
-                break;
-            // case 'Lifestyle Bowls':
-            //     category=<LBowls />
-            //     break;
-            // case 'Drinks':
-            //     category=<Drinks />
-            //     break;
-            // case 'Sides':
-            //     category=<Sides />
-            //     break;
-            default:
-                category=null;
-        }
+        console.log(this.state.images)
+        // get the food for the current category
+        let food_items = this.state.images.map(img => {
+            if (img.category === this.state.currCategory){
+                return img
+            }
+        }).filter(i => { // get rid of undefined
+            return i != null
+        })
+        console.log("foods:")
+        console.log(food_items)
+
         return (
             <div className='App'>
                 <div className='Navs'>
@@ -71,8 +71,9 @@ class Header extends Component{
                             <li onClick={() => this.handleCategory('Drinks')} >Drinks</li>
                         </ul> */}
                         <ul>
-                            {this.state.images.map(category =>(
-                                <li key={this.state.images.indexOf(category)}>
+                            {this.state.categories.map(category =>(
+                                <li key={this.state.categories.indexOf(category)}
+                                onClick={() => this.handleCategory(category)}>
                                     {category}
                                 </li>
                             ))}
@@ -80,7 +81,7 @@ class Header extends Component{
                         
                     </div>
                     <div className='menu'>
-                        {category}
+                        {this.state.currCategory != ''? <Entrees category={this.state.currCategory} food={food_items}/> : ''}
                     </div>
                 </div>
             </div>

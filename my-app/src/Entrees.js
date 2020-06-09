@@ -19,6 +19,24 @@ class Entrees extends Component{
         this.CloseModal = this.CloseModal.bind(this)
     }
 
+    // componentDidMount(){
+    //     fetch('http://localhost:8000/image_storage')
+    //     .then(results => results.json())
+    //     .then(
+    //         results => {
+    //             // get food pertaining to the category
+    //             let imgs = results.map(img => {
+    //                 if (img.category === this.props.category){
+    //                     return img
+    //                 }
+    //             }).filter(i => { // get rid of undefined
+    //                 return i != null
+    //             })
+    //             this.setState({images: imgs})
+    //         }
+    //     );
+    // }
+
     OpenModal(e){
         const name = e.target.dataset.name
         const price = e.target.dataset.price
@@ -31,9 +49,10 @@ class Entrees extends Component{
     }
 
     render(){
+        console.log(this.props.food)
         return (
             <div>
-                <div className='food'>
+                {/* <div className='food'>
                     <img src={burrito} onClick={this.OpenModal} data-name='burrito' data-price='6.00'/>
                     <label>Burrito, </label>
                     <label className='price'>$6.00</label>
@@ -57,7 +76,14 @@ class Entrees extends Component{
                     <img src={saled}/>
                     <label>Saled, </label>
                     <label className='price'>$3.00</label>
-                </div>
+                </div> */}
+                {this.props.food.map(obj => (
+                    <div className='food' key={obj.id}>
+                        <img src={obj.image} />
+                        <label>{obj.title}, </label>
+                        <label>${obj.price}</label>
+                    </div>
+                ))}
                 <ReactModal 
                 isOpen={this.state.showModal} 
                 onRequestClose={this.CloseModal}
