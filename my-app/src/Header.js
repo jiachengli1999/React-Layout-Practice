@@ -6,7 +6,21 @@ class Header extends Component{
         super()
         this.state=({
             currCategory: '',
+            images: [],
         })
+
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:8000/image_storage')
+        .then(results => results.json())
+        .then(
+            // results => this.setState({images: results})
+            results => {
+                // get unique categories
+                this.setState({images: Array.from(new Set(results.map(img => img.category)))})
+            }
+        );
     }
 
     handleCategory = (data) =>{
@@ -50,12 +64,20 @@ class Header extends Component{
                 </div>
                 <div className='menu_row'>
                     <div className='categories'>
-                        <ul>
+                        {/* <ul>
                             <li onClick={() => this.handleCategory('Entrees')} >Entrees</li>
                             <li onClick={() => this.handleCategory('Lifestyle Bowls')} >Lifestyle Bowls</li>
                             <li onClick={() => this.handleCategory('Sides')} >Sides</li>
                             <li onClick={() => this.handleCategory('Drinks')} >Drinks</li>
+                        </ul> */}
+                        <ul>
+                            {this.state.images.map(category =>(
+                                <li key={this.state.images.indexOf(category)}>
+                                    {category}
+                                </li>
+                            ))}
                         </ul>
+                        
                     </div>
                     <div className='menu'>
                         {category}
