@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import burrito from './entrees_pics/burrito.PNG'
-import burrito_bowl from './entrees_pics/burrito_bowl.PNG'
-import one_taco from './entrees_pics/one_taco.PNG'
-import three_tacos from './entrees_pics/three_tacos.PNG'
-import saled from './entrees_pics/saled.PNG'
-import './FoodList.css'
+import './styles/FoodList.css'
 import ReactModal from 'react-modal'
 
 class FoodList extends Component{

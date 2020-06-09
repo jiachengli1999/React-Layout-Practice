@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Header.css'
+import './styles/Header.css'
 import FoodList from './FoodList.js'
 
 class Header extends Component{
