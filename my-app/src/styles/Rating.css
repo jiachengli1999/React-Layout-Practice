@@ -1,0 +1,29 @@
+.rating-form, .title, .rating-box, .rating-btn{
+    border: 5px solid black;
+}
+
+.rating-form{
+    padding: 100px;
+}
+
+.rating-box{
+    padding: 50px;
+    display: flex;
+}
+
+.rating-btn{
+    padding:10px;
+}
+
+/* .radio-btn{
+    display: none;
+} */
+
+/* Hides radio but clicking will still affect label */
+input[type='radio']{
+    display: none;
+}
+
+/* .star{
+    cursor: pointer;
+} */

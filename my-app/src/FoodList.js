@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './styles/FoodList.css'
 import ReactModal from 'react-modal'
+import Rating from './Rating.js'
+import { Link } from 'react-router-dom'
 
 class FoodList extends Component{
     constructor(){
@@ -43,7 +45,11 @@ class FoodList extends Component{
                 className='Modal'>
                     <div>{this.state.item_name}</div>
                     <div>${this.state.item_price}</div>
-                    <button onClick={this.CloseModal}>Add to Cart</button>
+                    <div className='button-layer'>
+                        <button onClick={this.CloseModal}>Close</button>
+                        <button>Add to Cart</button>
+                        <Link to="/Rating" className="btn btn-primary">Rate</Link>
+                    </div>
                 </ReactModal>
             </div>
         )
